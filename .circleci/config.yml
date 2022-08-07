@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run: npm i
       - run: npm i 
-     
+     #bad
 
 
 workflows:
