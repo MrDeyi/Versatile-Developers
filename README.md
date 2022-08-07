@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/MrDeyi/setup.svg?style=svg)](https://app.circleci.com/pipelines/github/MrDeyi/setup)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
