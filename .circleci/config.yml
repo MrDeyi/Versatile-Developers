@@ -33,6 +33,6 @@ workflows:
     jobs:
       - test
       - build
-      - codecov/upload
+      
   
  
