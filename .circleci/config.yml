@@ -24,6 +24,7 @@ jobs:
       - checkout
       - run: npm i
       - run: npm i 
+       - codecov/upload
      #bad
 
 
@@ -32,8 +33,5 @@ workflows:
     jobs:
       - test
       - build
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
+  
  
