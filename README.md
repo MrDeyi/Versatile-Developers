@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/npm)[![CircleCI](https://circleci.com/gh/MrDeyi/Versatile-Developers.svg?style=svg)](https://app.circleci.com/pipelines/github/MrDeyi/Versatile-Developers)
+[![CircleCI](https://circleci.com/gh/MrDeyi/Versatile-Developers.svg?style=svg)](https://app.circleci.com/pipelines/github/MrDeyi/Versatile-Developers)
 ![npm](https://img.shields.io/npm/v/npm)
 
 # Getting Started with Create React App
