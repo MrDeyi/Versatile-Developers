@@ -17,7 +17,8 @@ function Register(){
     const[conPassword, setConPassword] = useState('')
     const[error, setError] = useState('')
 
-    const navigate = useNavigate()
+    //store the user globally
+    const navigate = useNavigate();
     const {setTimeActive} = useAuthValue
 
     //Check Password and confrim_Password if they match
@@ -43,54 +44,56 @@ function Register(){
                 sendEmailVerification(auth.currentUser)
                 .then(() =>{
                     //registered
-                    setTimeActive(true)
+                    // setTimeActive(true)
                     navigate('/verify-email')
-                }).catch((err) => alert(err.message))
+                }).catch((err) => alert("Connection Error Please TRY again!!"))
             })
             //network error
-            .catch(err => setError(err.message))
+            .catch(err => setError("User EXISTs Please Log in if you have an ACCOUNT!!"))
         }
 
         //also this
         setEmail('')
-        setPassword('')
-        setConPassword('')
+        // setPassword('')
+        // setConPassword('')
     }
 
 //also this , just a simple form
     return(
         <div className="center">
             <div className="auth">
-                <h1>Register</h1>
-                {error && <div className="auth_error">{error}</div>}
-                <form onSubmit={register} name = 'reg_form'>
-                    <input
-                        type = 'email'
-                        value = {email}
-                        placeholder = "Enter your Email address"
-                        required
-                        onChange={e => setEmail(e.target.value)}/>
+                <div className="col-1">
+                    <h1>Register</h1>
+                    {error && <div className="auth_error">{error}</div>}
+                    <form onSubmit={register} name = 'form'>
+                        <input
+                            type = 'email'
+                            value = {email}
+                            placeholder = "Enter your Email address"
+                            required
+                            onChange={e => setEmail(e.target.value)}/>
+                            
+                        <input
+                            type = 'password'
+                            value = {password}
+                            placeholder = "Enter your Password"
+                            required
+                            onChange={e => setPassword(e.target.value)}/>
+
+                        <input
+                            type = 'password'
+                            value = {conPassword}
+                            placeholder = "Confirm Password"
+                            required
+                            onChange={e => setConPassword(e.target.value)}/>
+
+                        <button type="submit" className="button">Register</button>
+                    </form>
+                    <span>
                         
-                    <input
-                        type = 'password'
-                        value = {password}
-                        placeholder = "Enter your Password"
-                        required
-                        onChange={e => setPassword(e.target.value)}/>
-
-                    <input
-                        type = 'password'
-                        value = {conPassword}
-                        placeholder = "Confirm Password"
-                        required
-                        onChange={e => setConPassword(e.target.value)}/>
-
-                    <button type="submit">Register</button>
-                </form>
-                <span>
-                    
-                    <Link to='/login'> Already have an account? Login</Link>
-                </span>
+                        <Link to='/login'> Already have an account? Login</Link>
+                    </span>
+                </div>
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import {auth} from '../conf/fireconf'
 import {sendEmailVerification} from 'firebase/auth'
 import {useNavigate} from 'react-router-dom'
 import Login from './Login'
+import './styleform.css'
 
 
 
@@ -72,6 +73,7 @@ function VerifyEmail() {
         </p>
         <span>Follow the instruction in the email to verify your account</span>       
         <button 
+          className='button'
           onClick={resendEmailVerification}
           disabled={timeActive}
         >Resend Email {timeActive && time}</button>

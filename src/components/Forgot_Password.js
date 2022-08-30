@@ -31,11 +31,14 @@ function ForgotPassword(){
                     placeholder="Enter your email"
                     onChange={e => setEmail(e.target.value)}>
                     </input>
-                    <button type="submit" >
+                    <button
+                        className="button"
+                        type="submit" >
                         Password Reset Email
                     </button>
                 </form> 
                 <button
+                    className="button"
                     type="button"
                     onClick={
                         ()=>
