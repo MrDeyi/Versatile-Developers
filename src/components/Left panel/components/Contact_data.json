@@ -1,0 +1,30 @@
+
+const Contacts=[
+    {
+        "id":"01",
+        "name":"Buhle Jayne",
+        "photo":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.unigreet.com%2Fwp-content%2Fuploads%2F2020%2F04%2FSmiley-816x1024.jpg&imgrefurl=https%3A%2F%2Fwww.unigreet.com%2Fsweet-whatsapp-profile-images%2F&tbnid=mUXBzqaKAXn-eM&vet=12ahUKEwjhts__vt35AhWi8IUKHYwXALMQMyhBegUIARCBAQ..i&docid=2tmRh42XnG1bpM&w=816&h=1024&q=profile%20photos&ved=2ahUKEwjhts__vt35AhWi8IUKHYwXALMQMyhBegUIARCBAQ"
+    },
+    {
+        "id":"02",
+        "name":"Mosis M",
+        "photo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzPfZtBIi9mrbG2-nAnaa7bVHaRzqmej0uiQ&usqp=CAU"
+    },
+    {
+        "id":"03",
+        "name":"Karabo M",
+        "photo":"https://www.google.com/imgres?imgurl=https%3A%2F%2F1.bp.blogspot.com%2F-_hys8BD9j38%2FYTuyaWdan9I%2FAAAAAAAAuVQ%2FBLKwKXpLnpQWI40kntZz7HyA6FzQRZJ0ACLcBGAsYHQ%2Fs1600%2FBest-Profile-Pic-For-Boys%252B%2525288%252529.jpg&imgrefurl=https%3A%2F%2Fwww.goodmorningimagess.online%2F2021%2F09%2Fbest-profile-pic-for-boys.html&tbnid=O69qovNSK2KIPM&vet=12ahUKEwjhts__vt35AhWi8IUKHYwXALMQMyg-egQIARB7..i&docid=cDBMf-N2RFeabM&w=900&h=1600&q=profile%20photos&ved=2ahUKEwjhts__vt35AhWi8IUKHYwXALMQMyg-egQIARB7"
+    },
+    {
+        "id":"04",
+        "name":"Amahle D",
+        "photo":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.goodmorninghdloveimages.com%2Fwp-content%2Fuploads%2F2020%2F04%2FSweet-Whatsapp-DP-Images-10.gif&imgrefurl=https%3A%2F%2Fwww.goodmorninghdloveimages.com%2Fsweet-images-for-whatsapp-profile%2F&tbnid=HP5U94PWQ3-JoM&vet=12ahUKEwjhts__vt35AhWi8IUKHYwXALMQMyhOegUIARCgAQ..i&docid=DiGP2tfXpofxqM&w=768&h=732&q=profile%20photos&ved=2ahUKEwjhts__vt35AhWi8IUKHYwXALMQMyhOegUIARCgAQ"
+    },
+    {
+        "id":"05",
+        "name":"Unathi H",
+        "photo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUAQOSkZYfkEA301YD7ScojRUNG1lAeFC1tA&usqp=CAU"
+    }
+
+]
+;

@@ -1,0 +1,12 @@
+.leftpanel{
+    background:#7ad6d0;
+    margin:0;
+    border:0;
+    padding: 20px;
+    border-top-left-radius: 25px;
+    flex:2;
+    margin:10px;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+}

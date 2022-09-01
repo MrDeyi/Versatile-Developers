@@ -1,0 +1,33 @@
+.Middlepanel{
+    background-color:white;
+    margin-top:10px;
+    border:0;
+    padding:0;
+    flex:6;
+    height:100vh;
+}
+.homeicon{
+   
+    height:20px;
+    width:20px;
+}
+.homeicon:hover {
+    color:#1b68bf; 
+    
+  }
+
+.display::-webkit-scrollbar {
+        width: 5px;
+      }
+.display::-webkit-scrollbar-track {
+        box-shadow: white; 
+        border-radius: 100vw;
+        margin-block:.5em;
+      }
+.display::-webkit-scrollbar-thumb {
+        background: #d110e3; 
+        border-radius: 100vw;
+      }
+.display::-webkit-scrollbar-thumb:hover {
+        background:#d110e3; 
+      }

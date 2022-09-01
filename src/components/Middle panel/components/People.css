@@ -1,0 +1,23 @@
+.people{
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      margin-bottom:1px;
+      color:black;
+      width:15rem;
+      background:yellow;
+      margin:0.5rem;
+      padding:1rem;
+      height:10rem
+
+   
+   }
+   .imgperson{
+       width:100px;
+       height:100px;
+       margin-left:1.7rem;
+       margin-top:0.5rem;
+       object-fit:cover;
+      border-radius:50%
+   }
+   
