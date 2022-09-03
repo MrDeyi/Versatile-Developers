@@ -1,5 +1,4 @@
-import {render, screen } from "@testing-library/react";
-import Middlepanel from "./Middlepanel.js";
+
 
 const sum = require('../../sum');
 
