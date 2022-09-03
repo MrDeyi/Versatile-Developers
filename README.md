@@ -3,4 +3,4 @@
 [![codecov](https://codecov.io/gh/MrDeyi/Versatile-Developers/branch/master/graph/badge.svg?token=RJPDG1L139)](https://codecov.io/gh/MrDeyi/Versatile-Developers)
 
 [![Codecov](https://img.shields.io/codecov/c/github/MrDeyi/Versatile-Developers)]
-([https://codecov.io/github/MrDeyi/Versatile-Developers/commit/32b1e956f3e5c7aae1e30b082fc319e870fdbea8](https://codecov.io/github/MrDeyi/Versatile-Developers/commit/32b1e956f3e5c7aae1e30b082fc319e870fdbea8))
+
