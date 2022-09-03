@@ -36,10 +36,10 @@ function Middlepanel() {
         <Navbar bg="bg-info text-white" variant="light">
         <Container>
           <Nav className="me-auto">
-            <Nav.Link ><HiOutlineHome onClick={gethome} className="homeicon"/></Nav.Link>
-            <Nav.Link ><HiUserGroup onClick={getfreinds} className="homeicon"/></Nav.Link>
-            <Nav.Link ><FaComments onClick={()=>setChats(!chats)} className="homeicon"/></Nav.Link>
-            <Nav.Link ><HiFlag onClick={getalert} className="homeicon"/></Nav.Link>
+            <Nav.Link ><HiOutlineHome onClick={gethome} className="homeicon" data-testid="house" /></Nav.Link>
+            <Nav.Link ><HiUserGroup onClick={getfreinds} className="homeicon" data-testid="group"/></Nav.Link>
+            <Nav.Link ><FaComments onClick={()=>setChats(!chats)} className="homeicon" data-testid="chats"/></Nav.Link>
+            <Nav.Link ><HiFlag onClick={getalert} className="homeicon" data-testid="flag"/></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
