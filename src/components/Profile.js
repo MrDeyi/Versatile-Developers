@@ -8,14 +8,20 @@ import Logout_P from "../pic/logout.jpg"
 import setting_P from "../pic/setting.jpg"
 import messege_P from "../pic/message.png"
 import { Link } from 'react-router-dom'
+import TWOFA from './TWOFA'
+// import Home from './Home/home'
+
 
 function Profile() {
+
     const hide = e=>{
         const toggleMenu = document.querySelector(".menu");
         toggleMenu.classList.toggle("active")
     }
     const {currentUser} = useAuthValue()
     return (
+
+        // <TWOFA></TWOFA>
       <div className='center'>
         <div className='action'>
             <div className='prof' onClick={hide}>

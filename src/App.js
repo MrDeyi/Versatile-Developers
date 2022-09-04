@@ -6,11 +6,12 @@ import Profile from './components/Profile'
 import VerifyEmail from './components/VerifyEmail';
 import Login from './components/Login'
 import { auth } from './conf/fireconf';
-import {onAuthStateChanged} from 'firebase/auth'
+import {onAuthStateChanged, TwitterAuthProvider} from 'firebase/auth'
 import PrivateRoute from './components/PrivateRoute'
 import {AuthProvider} from './components/AuthContext'
 import {Navigate} from 'react-router-dom'
 import ForgotPassword from './components/Forgot_Password';
+import TWOFA from './components/TWOFA';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
           :<Navigate to='/' replace/>}
            />
           <Route path='/verify-email' element={<VerifyEmail/>} /> 
+          <Route path='/security' element ={<TWOFA/>}/>
         </Routes>  
       </AuthProvider>
   </Router>

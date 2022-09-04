@@ -4,7 +4,8 @@ import {useNavigate, Link} from "react-router-dom"
 
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { useAuthValue } from "./AuthContext";
-import './styleform.css'
+import Registerstyle from "./Register.module.css"
+import loginpic from "../pic/Login.jpg"
 
 
 export const CorrectEmail = (str = "") => str.includes('@');
@@ -60,39 +61,51 @@ function Register(){
 
 //also this , just a simple form
     return(
-        <div className="center">
-            <div className="auth">
-                <div className="col-1">
-                    <h1>Register</h1>
-                    {error && <div className="auth_error">{error}</div>}
-                    <form onSubmit={register} name = 'form'>
-                        <input
-                            type = 'email'
-                            value = {email}
-                            placeholder = "Enter your Email address"
-                            required
-                            onChange={e => setEmail(e.target.value)}/>
-                            
-                        <input
-                            type = 'password'
-                            value = {password}
-                            placeholder = "Enter your Password"
-                            required
-                            onChange={e => setPassword(e.target.value)}/>
-
-                        <input
-                            type = 'password'
-                            value = {conPassword}
-                            placeholder = "Confirm Password"
-                            required
-                            onChange={e => setConPassword(e.target.value)}/>
-
-                        <button type="submit" className="button">Register</button>
-                    </form>
-                    <span>
-                        
+        <div className={Registerstyle.register}>
+            <div className={Registerstyle.container}>
+                <div className="sign-content">
+                    <div className='signin-image'>
+                        <figure>
+                            <img src={loginpic} alt = "Login"/>
+                        </figure>
                         <Link to='/login'> Already have an account? Login</Link>
-                    </span>
+                    </div>
+
+                    <div className="signform">
+                        <h2 className="title">Register</h2>
+                        {error && <div className="auth_error">{error}</div>}
+                        <form onSubmit={register} name = 'form'>
+                            <div className='signform'>
+                                <input
+                                    type = 'email'
+                                    value = {email}
+                                    placeholder = "Enter your Email address"
+                                    required
+                                    onChange={e => setEmail(e.target.value)}/>
+                            </div>
+
+                            <div className='signform'>
+                                <input
+                                    type = 'password'
+                                    value = {password}
+                                    placeholder = "Enter your Password"
+                                    required
+                                    onChange={e => setPassword(e.target.value)}/>
+                            </div>
+                            <div className='signform'>
+                            <input
+                                type = 'password'
+                                value = {conPassword}
+                                placeholder = "Confirm Password"
+                                required
+                                onChange={e => setConPassword(e.target.value)}/>
+                            </div>
+                            <div className='form-group form-button'>
+                                <button type="submit" className="button">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </div>

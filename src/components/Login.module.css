@@ -1,0 +1,15 @@
+.login{
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    background: rgb(223,221,221);
+}
+
+.container{
+    height: 75vh;
+    width: 70%;
+    background:rgb(23, 69, 46);
+    border-radius: 1rem;
+    margin: 2rem;
+    box-shadow: 0.5rem white;
+}
