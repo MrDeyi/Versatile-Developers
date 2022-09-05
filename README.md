@@ -3,6 +3,6 @@
 [![Codecov](https://img.shields.io/codecov/c/github/Lindokuhle777/Short-Courses)](https://codecov.io/github/Lindokuhle777/Short-Courses/commit/1a9e06eb94c4d9ed9ede8ded3ffceba418eb63e1)
 
 
-
+We are developing a Social media web-app (Wits Social). This app is aimed at connecting all members of the wits community from students to staff members.Every user can register using their wits credentials. The users will be able to Upload pictures/videos or posts on to the feed. Everyone in using the app can access feed randomly and like or share to their own feeds. The users can also search for other users and groups , then start a chat or join a group respectively.On the right panel users can see upcoming events and also set reminders for a particular event.
 
 
