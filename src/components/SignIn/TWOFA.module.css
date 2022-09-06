@@ -72,3 +72,12 @@ body{
     color: aliceblue;
     background-color: black;
 }
+
+.stuff{
+    color: aliceblue;
+    background-color: rgb(185, 55, 55);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+}

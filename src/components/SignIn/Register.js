@@ -105,7 +105,10 @@ function Register(){
                             </div>
                             <div className="btn btn-primary btn-lg">
                                 <button type="submit" className="btn btn-primary btn-lg">Register</button>
-                                <Link to='/login'> Already have an account? Login</Link>
+                                <Link to='/login' style={{backgroundColor: "#b3e6ff",
+                                              padding:"5px",
+                                              border:"2px solid black",
+                                              borderRadius:"5px"}}> Already have an account? Login</Link>
                             </div>
                         </form>
                     </div>

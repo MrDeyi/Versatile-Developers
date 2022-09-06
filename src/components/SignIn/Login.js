@@ -77,8 +77,7 @@ function Login(){
 
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <h2 className={Loginstyle.title}>Wits Social App</h2>
-              <span>register and enjoy the service</span>
-
+              <span>Log in and enjoy the service</span>
               {error && <div className={Loginstyle.auth__error}>{error}</div>}
               <form onSubmit={login} className="Loginfrom" name='form' id = "form">
 
@@ -133,7 +132,10 @@ function Login(){
 
                 <div className="btn btn-primary btn-lg">
                   <button type='submit' className="btn btn-primary btn-lg">Login</button>
-                  <Link to='/register'>  Don't have and account? Create one here</Link>
+                  <Link to='/register' style={{backgroundColor: "#b3e6ff",
+                                              padding:"5px",
+                                              border:"2px solid black",
+                                              borderRadius:"5px"}}>  Don't have and account? Create one here</Link>
                 </div>
               </form>
             </div>
@@ -142,7 +144,6 @@ function Login(){
 
       <div
         class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-        {/* <!-- Copyright --> */}
         <div class="text-white mb-3 mb-md-0">
           Copyright © 2022. All rights reserved.
         </div>

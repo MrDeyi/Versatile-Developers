@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { auth } from "../../conf/fireconf";
 import {useNavigate} from 'react-router-dom'
 import {sendPasswordResetEmail} from 'firebase/auth'
-import './styleform.css'
+import TWO from './TWOFA.module.css'
 
 function ForgotPassword(){
     const[email,setEmail] = useState('')
@@ -15,16 +15,20 @@ function ForgotPassword(){
     }
 
     return(
-        <div className="center">
-            <div className="auth">
-            <p>
-                <strong>Provide a registered Password !!</strong>
-            </p>
-            <span>Wits-Social-App Developers will send you a email to
-                 reset your password
-            </span>
+
+        <div className={TWO.box}>
+            <div className={TWO.stuff}>
+            Password Reset
+                <p>
+                    <strong>Provide a registered Password !!</strong>
+                </p>
+                <span>Wits-Social-App Developers will send you a email to
+                    reset your password
+                </span>
+            </div>
                 <form onSubmit={triggerResetEmail}>
                     <input
+                    className={TWO.input}
                     type='email' 
                     value={email}
                     required
@@ -33,21 +37,22 @@ function ForgotPassword(){
                     </input>
                     <button
                         className="button"
-                        type="submit" >
+                        type="submit" 
+                        placeholder='Provide a registered Password !!'>
                         Password Reset Email
                     </button>
                 </form> 
-                <button
-                    className="button"
-                    type="button"
-                    onClick={
-                        ()=>
-                        navigate('/login')
-                }
-                    >
-                        Login Here
+                <div className="btn btn-primary btn-lg">
+                    <button
+                        className="btn btn-primary btn-lg"
+                        type="button"
+                        onClick={
+                            ()=>
+                            navigate('/login')
+                        }
+                        > Login Here
                     </button>
-            </div>
+                </div>
         </div>
     )
 
