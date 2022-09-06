@@ -1,13 +1,13 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
-import './styleform.css'
+import Loginstyle from "./Login.module.css"
 import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
-import {auth} from '../../conf/fireconf'
+import { auth } from '../../conf/fireconf'
 import {useNavigate} from 'react-router-dom'
 import {useAuthValue} from './AuthContext' //globilise our user details
-// import Back from "../pic/back.png"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// import Back from "src\pic\back.jpg"
+import loginpic from "../../pic/Login.jpg"
+import TWOFA from './TWOFA'
 
 
 export function EmailCheck(email){
@@ -29,14 +29,12 @@ function Login(){
 
   const loginWIthGoogle = ()=>{
     const auth  = getAuth();
-  
     signInWithPopup(auth,provider)
     .then(result=>{
       setUser(result.user)
       navigate('/')
     })
   }
-
     /*
         a simple function component that check if the user exist,and verified the email?
         if : not verified, then send a verification email
@@ -60,52 +58,108 @@ function Login(){
       .catch(err => alert("Connection Error Please TRY again!!"))
     }
     else{
-      navigate('/')
+      //Confirm user using 2FA
+      // <TWOFA></TWOFA>
+      navigate('/security');
     }
     })
-    .catch(err => setError("User details INVALID!!"))
+    .catch(err => setError("INVALID User INPUT"))
   }
-
-
-
 
   //a simple log in page
   return(
-    <section>
-      <div className='center'>
-        <div className='auth'>
-          <div className='col-1'>
-            <h2>Login</h2>
-            <span>register and enjoy the service</span>
-            {/* this appearsif there is error */}
-            {error && <div className='auth__error'>{error}</div>}
-            <form onSubmit={login} name='form' id = "form">
-              <input 
-                type='email' 
-                value={email}
-                required
-                placeholder="Enter your email"
-                onChange={e => setEmail(e.target.value)}/>
+    <section className='v-100' style={{backgroundColor: "lightblue"}} >
+      <div className="container-fluid h-custom">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-md-9 col-lg-6 col-xl-5">
+                <img src={loginpic} alt = "Login" className='img-fluid'/>
+            </div>
 
-              <input 
-                type='password'
-                value={password}
-                required
-                placeholder='Enter your password'
-                onChange={e => setPassword(e.target.value)}/>
+            <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <h2 className={Loginstyle.title}>Wits Social App</h2>
+              <span>register and enjoy the service</span>
 
-              <button type='submit' className='button'>Login</button>
-            </form>
-            <p>
-              <Link to='/register'>  Don't have and account? Create one here</Link>
-              <br></br>
-              <Link to='/forgot_password'>  Forgot Password?</Link>
-            </p>
-          </div>
+              {error && <div className={Loginstyle.auth__error}>{error}</div>}
+              <form onSubmit={login} className="Loginfrom" name='form' id = "form">
 
-          <div className='col-2'>
-            <button className='button' onClick={loginWIthGoogle}>Sign In with Google</button>
-          </div>
+                <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                  <p className='lead fw-normal mb-0 me-3'>Sign in with</p>
+
+                  <button className="btn btn-primary btn-floating mx-1">
+                    <i className="fab fa-facebook-f"></i>
+                  </button>
+
+                  <button className='btn btn-primary btn-floating mx-1'>
+                    <i className='fab fa-linkedin-in'></i>
+                  </button>
+
+                  <button onClick={loginWIthGoogle} className="btn btn-primary btn-floating mx-1">
+                    <i className="fab fa-google"></i>
+                  </button>
+                </div>
+                
+                <div className="divider d-flex align-items-center my-4">
+                  <p className="text-center fw-bold mx-3 mb-0">or</p>
+                </div>
+                <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
+                  <input 
+                    className='form-control form-control-lg'
+                    type='email' 
+                    value={email}
+                    required
+                    placeholder="Enter your email"
+                    onChange={e => setEmail(e.target.value)}/>
+                </div>
+
+                <div className="form-outline mb-3" style={{backgroundColor: "white"}}>
+                  <input
+                    className='form-control form-control-lg'
+                    type='password'
+                    value={password}
+                    required
+                    placeholder='Enter your password'
+                    onChange={e => setPassword(e.target.value)}/>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="form-check mb-0">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="" />
+                    <label class="form-check-label" for="">
+                      Remember me
+                    </label>
+                  </div>
+                  <Link to='/forgot_password'>  Forgot Password?</Link>
+                </div>
+
+                <div className="btn btn-primary btn-lg">
+                  <button type='submit' className="btn btn-primary btn-lg">Login</button>
+                  <Link to='/register'>  Don't have and account? Create one here</Link>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+
+      <div
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+        {/* <!-- Copyright --> */}
+        <div class="text-white mb-3 mb-md-0">
+          Copyright © 2022. All rights reserved.
+        </div>
+
+        <div>
+          <a href="#!" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#!" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#!" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#!" class="text-white">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
         </div>
       </div>
     </section>

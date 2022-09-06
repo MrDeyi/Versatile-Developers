@@ -1,10 +1,11 @@
 import { useState } from "react";
-import {auth} from '../../conf/fireconf'
+import { auth } from "../../conf/fireconf";
 import {useNavigate, Link} from "react-router-dom"
 
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { useAuthValue } from "./AuthContext";
-import './styleform.css'
+import Registerstyle from "./Register.module.css"
+import loginpic from "../../pic/Login.jpg"
 
 
 export const CorrectEmail = (str = "") => str.includes('@');
@@ -60,42 +61,80 @@ function Register(){
 
 //also this , just a simple form
     return(
-        <div className="center">
-            <div className="auth">
-                <div className="col-1">
-                    <h1>Register</h1>
-                    {error && <div className="auth_error">{error}</div>}
-                    <form onSubmit={register} name = 'form'>
-                        <input
-                            type = 'email'
-                            value = {email}
-                            placeholder = "Enter your Email address"
-                            required
-                            onChange={e => setEmail(e.target.value)}/>
-                            
-                        <input
-                            type = 'password'
-                            value = {password}
-                            placeholder = "Enter your Password"
-                            required
-                            onChange={e => setPassword(e.target.value)}/>
 
-                        <input
-                            type = 'password'
-                            value = {conPassword}
-                            placeholder = "Confirm Password"
-                            required
-                            onChange={e => setConPassword(e.target.value)}/>
-
-                        <button type="submit" className="button">Register</button>
-                    </form>
-                    <span>
+        <section className="v-100" style={{backgroundColor: "gray"}}>
+            <div className="container-fluid h-custom">
+                <div className="row d-flex justify-content-center align-items-center h-100">
+                    <div className="col-md-9 col-lg-6 col-xl-5">
+                            <img src={loginpic} alt = "Login"/>
                         
-                        <Link to='/login'> Already have an account? Login</Link>
-                    </span>
+                    </div>
+
+                    <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <h2 className={Registerstyle.title}>Welcome to Wits Social App</h2>
+                        <span>Register in and enjoy the service</span>
+                        {error && <div className={Registerstyle.auth_error}>{error}</div>}
+                        <form onSubmit={register} name ="form" className="Loginfrom">
+                            <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
+                                <input
+                                    className='form-control form-control-lg'
+                                    type = 'email'
+                                    value = {email}
+                                    placeholder = "Enter your Email address"
+                                    required
+                                    onChange={e => setEmail(e.target.value)}/>
+                            </div>
+
+                            <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
+                                <input
+                                    className='form-control form-control-lg'
+                                    type = 'password'
+                                    value = {password}
+                                    placeholder = "Enter your Password"
+                                    required
+                                    onChange={e => setPassword(e.target.value)}/>
+                            </div>
+                            <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
+                            <input
+                                className='form-control form-control-lg'
+                                type = 'password'
+                                value = {conPassword}
+                                placeholder = "Confirm Password"
+                                required
+                                onChange={e => setConPassword(e.target.value)}/>
+                            </div>
+                            <div className="btn btn-primary btn-lg">
+                                <button type="submit" className="btn btn-primary btn-lg">Register</button>
+                                <Link to='/login'> Already have an account? Login</Link>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+
+            <div
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+        
+        <div class="text-white mb-3 mb-md-0">
+          Copyright © 2022. All rights reserved.
         </div>
+
+        <div>
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#!" class="text-white me-4">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="#!" class="text-white">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            </div>
+        </div>
+        </section>
     )
 }
 
