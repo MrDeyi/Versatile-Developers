@@ -15,7 +15,7 @@ jobs:
           name: Run tests and collect coverage
           command: npm run test
       - codecov/upload:
-           file: './coverage/clover.xml'
+           
          
 
 workflow:
