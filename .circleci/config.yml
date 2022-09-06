@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Run tests and collect coverage
           command: npm run test
-      - codecov/upload:
+      - codecov/upload
            
          
 
