@@ -2,23 +2,11 @@ version: '2.1'
 orbs:
   codecov: codecov/codecov@3.1.1
   node: circleci/node@4.7.0
-jobs:
-  build:
-    docker:
-      - image: cimg/node:current
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run tests and collect coverage
-          command: npm run test
-      - codecov/upload
-
-workflow:
-  version: 2.1
-  build-test:
+workflows:
+  upload-to-codecov:
     jobs:
-      - build
+      - node/test:
+          post-steps:
+            - codecov/upload
+
  
