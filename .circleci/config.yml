@@ -16,7 +16,7 @@ jobs:
           command: npm run test
       - codecov/upload:
            file: './coverage/clover.xml'
-          token: 3998d015-de84-41c6-8533-681b577446cf
+         
 
 workflow:
   version: 2.1
