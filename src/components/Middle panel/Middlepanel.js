@@ -49,7 +49,7 @@ function Middlepanel() {
             <div className="display" style={{ width: '98%',height:'70%', backgroundColor: "lightblue",margin:'10px', padding:0 ,overflow: 'auto'}}>
      
               {freinds && <People/>} 
-              {home && <Events/>}
+              {home && <Events.Events/>}
             </div>
         </div>
        
