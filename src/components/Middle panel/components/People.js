@@ -5,6 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './People.css'
+import { db } from '../../../conf/fireconf'
+//import {useState, useEffect} from 'react';
+import {doc, setDoc, collection, getDocs} from "firebase/firestore"; 
 
 function Display() {
     const People=[
@@ -35,7 +38,25 @@ function Display() {
         }
     
     ]
-    ;
+
+    const addFriend = (event, post) => {
+        //event.currentTarget.disabled = true;
+        // we should remove the person from the people database
+        // and add the person to the friends database
+        const REF_COLLECTION = collection(db, "Friends");
+        const REF_COLLECTION2 = collection(db, "People");
+
+        // useEffect(() => {
+        //     const getFriends = async ()=>{
+        //         const data = await getDocs(REF_COLLECTION);
+        //         //setTags(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        //     }
+        //     getFriends();
+        // }, [])
+        
+        console.log(post)
+    }
+
   return (
     <Container style={{ width: '100%',height:'100%' }}>
       <Row>
@@ -46,14 +67,10 @@ function Display() {
          <Card.Img variant="top" src={post.photo} className='imgperson' />
          <Card.Body>
            <Card.Title>{post.name}</Card.Title>
-           <Button variant="primary">follow</Button>
+           <Button onClick={ event => addFriend(event, post) } variant="primary">follow</Button>
          
          </Card.Body>
          </Card>
-       
-
-
-         
           
         ))
         }
