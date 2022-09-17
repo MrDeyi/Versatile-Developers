@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FcShare,FcLike,FcGoogle } from "react-icons/fc";
+<<<<<<< HEAD
 import { useState } from 'react';
 
 const EventComponent = ({event}) => {
@@ -11,6 +12,10 @@ const EventComponent = ({event}) => {
             setCounter(counter + 1);
         }
 
+=======
+
+const EventComponent = ({event}) => {
+>>>>>>> 95d52c2db2d559c3d4ccc8520c9101f9b8207ccf
     return (
         <div className="cardp">
             <img data-testid="image" className="card_img" src={ event.event_img }/>
@@ -37,8 +42,13 @@ const EventComponent = ({event}) => {
         
         <div className="card_icons">
             <div className="card_fireicon">
+<<<<<<< HEAD
             <FcLike onClick={getalikes}/>
                     <p data-testid="numLikes" >{counter}</p>
+=======
+                <FcLike />
+                <p data-testid="numLikes" >{ event.likes }</p>
+>>>>>>> 95d52c2db2d559c3d4ccc8520c9101f9b8207ccf
             </div>
 
             <div className="event_organiser">
