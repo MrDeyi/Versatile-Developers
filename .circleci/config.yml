@@ -1,0 +1,26 @@
+version: '2.1'
+orbs:
+  codecov: codecov/codecov@3.0.0
+  node: circleci/node@4.7.0
+jobs:
+  build:
+    docker:
+      - image: cimg/node:current
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests and collect coverage
+          command: npm run test
+      - codecov/upload:
+          file: './clover.xml'
+
+workflow:
+  version: 2.1
+  build-test:
+    jobs:
+      - build
+ 
+ 

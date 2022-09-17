@@ -1,0 +1,10 @@
+body{
+    margin:0;
+    border:0;
+    width:100%;
+    background-color:white;
+
+}
+.home{
+    display:flex;
+}
