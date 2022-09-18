@@ -4,12 +4,13 @@ import Button from 'react-bootstrap/Button';
 
 function Search() {
   return (
-    <Form className="d-flex">
+    <Form className="d-flex" data-testid="contain">
     <Form.Control
       type="search"
       placeholder="Search"
       className="me-2"
       aria-label="Search"
+      data-testid="search"
     />
     
   </Form>)

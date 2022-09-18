@@ -61,10 +61,14 @@ function Middlepanel() {
             <Status/>
             <div className="display" style={{ width: '98%',height:'70%', backgroundColor: "lightblue",margin:'10px', padding:0 ,overflow: 'auto'}}>
      
-              {freinds && <People/>} 
-              {home && <Events.Events/>}
-              {bus && <Bus/>}
-              {chat && <Chats/>}
+              {freinds && <People />} 
+              {home && <Events.Events />}
+              {bus && <Bus />}
+              {chat && <Chats />}
+              <p data-testid="people">{freinds}</p>
+              <p data-testid="events">{home}</p>
+              <p data-testid="bus">{bus}</p>
+              <p data-testid="chatting">{chat}</p>
             </div>
         </div>
        

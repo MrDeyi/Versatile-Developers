@@ -3,6 +3,7 @@ import { ReactDOM } from 'react-dom';
 import {render, cleanup, screen} from '@testing-library/react'
 import "@testing-library/jest-dom/extend-expect";
 import event from '../Events'
+import userEvent from '@testing-library/user-event';
 
 const Eventdata=[
     {
@@ -68,6 +69,23 @@ it('renders Event component correctly', () => {
     const { getByTestId } = render(<event.EventComponent event={ Eventdata[0] } />)
     expect(getByTestId('numLikes').textContent).not.toBeNull()
     expect(getByTestId('numLikes').textContent).toBeDefined()
+    expect(screen.getByTestId('numLikes')).toBeInTheDocument()
+    
+})
+//testing  the liking user story
+it('should increase likes by one when clicked',()=>{
+    const { getByTestId } = render(<event.EventComponent event={ Eventdata[0] } />)
+    expect(screen.getByTestId('likebutton')).toBeInTheDocument();
+    userEvent.click(screen.getByTestId('likebutton'));
+    expect(screen.getByTestId('numLikes')).toHaveTextContent('24');
+
+})
+it('should not increase likes when clicked somewhere else',()=>{
+    const { getByTestId } = render(<event.EventComponent event={ Eventdata[0] } />)
+    expect(screen.getByTestId('numLikes')).toBeInTheDocument();
+    userEvent.click(screen.getByTestId('numLikes'));
+    expect(screen.getByTestId('numLikes')).toHaveTextContent('23');
+
 })
 
 

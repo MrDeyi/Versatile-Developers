@@ -36,7 +36,7 @@ function Your_groups() {
 
   return (
     <div className="your_groups">
-       <div className="header">Your Groups</div><br/>
+       <div className="header" data-testid="separator">Your Groups</div><br/>
         {groups.map(post=>(
           <div className="Single_friend">
           <img className="imgp" src={post.photo}/>

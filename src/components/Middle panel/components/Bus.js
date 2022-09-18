@@ -6,9 +6,9 @@ function Bus() {
       <thead>
         <tr>
           <th>#</th>
-          <th>Departure</th>
-          <th>Destination</th>
-          <th>Time</th>
+          <th data-testid="departure">Departure</th>
+          <th data-testid="destination">Destination</th>
+          <th data-testid="time">Time</th>
         </tr>
       </thead>
       <tbody>

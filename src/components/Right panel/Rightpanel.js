@@ -21,7 +21,7 @@ function Rightpanel() {
       const toggleMenu = document.querySelector(".menu");
       toggleMenu.classList.toggle("active")
   }
-  const {currentUser} = useAuthValue()
+
 
   return (
     
@@ -58,8 +58,8 @@ function Rightpanel() {
                   </ul>
             </div> */}
                 
-            <div className='tiktok'>
-               <div className='videos'>
+            <div className='tiktok' data-testid="tiktok">
+               <div className='videos' data-testid="video">
                   <ReactPlayer
                      className='react-player'
                      url='https://www.youtube.com/watch?v=32GjzPu07M4'
@@ -67,11 +67,12 @@ function Rightpanel() {
                      height='90%'
                      border-radius='20%'
                      controls
+                     data-testid="player"
                    />
                </div>
-               <div className='views'>view</div>
-               <div className='comments'>comments</div>
-               <div className='comment'>Add your comment</div>
+               <div className='views' data-testid="views">view</div>
+               <div className='comments' data-testid="comments">comments</div>
+               <div className='comment ' data-testid="space">Add your comment</div>
             </div>
          </div>
         {/* </div> */}

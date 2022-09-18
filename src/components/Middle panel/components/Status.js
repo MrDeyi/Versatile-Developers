@@ -56,10 +56,10 @@ function Status() {
            
            
         
-        {Contacts.map(post=>(
+        {Contacts.map((post,i)=>(
             <>
              <Nav.Link href="#home">
-          <div className="Single_status">
+          <div className="Single_status" key={i}>
           <img className="imgstatus" src={post.photo} onClick={() => setShow(true)}/>
            <span className="spanstatus">{post.name}</span>
           </div>
@@ -67,11 +67,11 @@ function Status() {
            </>
            ))}
        
-       {Contacts.map(st=>(
+       {Contacts.map((st,j)=>(
       <Modal
         show={show}
         onHide={() => setShow(false)}
-        
+        key={j}
         aria-labelledby="example-custom-modal-styling-title"
       >
         

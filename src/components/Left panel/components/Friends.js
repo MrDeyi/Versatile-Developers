@@ -32,11 +32,11 @@ function Friends() {
   return (
     <>
     <div className="friends">
-        <div className="header">Friends</div><br/>
-        {Contacts.map(post=>(
-          <div className="Single_friend">
-          <img className="imgp" src={post.photo}/>
-           <span className="span">{post.name}</span>
+        <div className="header" data-testid="separator">Friends</div><br/>
+        {Contacts.map((post,i)=>(
+          <div className="Single_friend" data-testid="profilep" key={i}>
+          <img className="imgp" src={post.photo} />
+           <span className="span" data-testid="name">{post.name}</span>
           </div>
         ))
         }
