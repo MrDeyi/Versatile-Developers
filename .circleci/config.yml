@@ -13,9 +13,9 @@ jobs:
           command: npm install
       - run:
           name: Run tests and collect coverage
-          command: npm run test
+          command: npm run test -- --coverage
       - codecov/upload:
-          file: './clover.xml'
+          file: coverage/*.json
 
 workflow:
   version: 2.1
