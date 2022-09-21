@@ -27,32 +27,36 @@ export default function Chats() {
             </MDBCardHeader>
             
               <MDBCardBody style={{width:'30rem'}} >
-                <div className="d-flex flex-row justify-content-start" >
+                <div className="d-flex flex-row justify-content-start"  >
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUAQOSkZYfkEA301YD7ScojRUNG1lAeFC1tA&usqp=CAU"
                     alt="avatar 1"
                     style={{ width:"50px",height:"50px",borderRadius:"50%"}}
+                    data-testid="image"
                   />
                   <div>
                     <p
                       className="small p-2 ms-3 mb-1 rounded-3"
                       style={{ backgroundColor: "#f5f6f7" }}
+                      data-testid="chaty12"
                     >
                       Hi
                     </p>
                     <p
                       className="small p-2 ms-3 mb-1 rounded-3"
                       style={{ backgroundColor: "#f5f6f7" }}
+                      data-testid="chaty11"
                     >
                       How are you ...???
                     </p>
                     <p
                       className="small p-2 ms-3 mb-1 rounded-3"
                       style={{ backgroundColor: "#f5f6f7" }}
+                      data-testid="chaty10"
                     >
                       What are you doing tomorrow? Can we come up a bar?
                     </p>
-                    <p className="small ms-3 mb-3 rounded-3 text-muted">
+                    <p className="small ms-3 mb-3 rounded-3 text-muted" data-testid="timeiii">
                       23:58
                     </p>
                   </div>
@@ -62,6 +66,7 @@ export default function Chats() {
                   <p
                     className="text-center mx-3 mb-0"
                     style={{ color: "#a2aab7" }}
+                    data-testid="chaty9"
                   >
                     Today
                   </p>
@@ -69,16 +74,16 @@ export default function Chats() {
 
                 <div className="d-flex flex-row justify-content-end mb-4 pt-1">
                   <div>
-                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" data-testid="chaty8">
                       Hiii, I'm good.
                     </p>
-                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" data-testid="chaty7">
                       How are you doing?
                     </p>
-                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" data-testid="chaty6">
                       Long time no see! Tomorrow office. will be free on sunday.
                     </p>
-                    <p className="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">
+                    <p className="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end" data-testid="timeii">
                       00:06
                     </p>
                   </div>
@@ -86,6 +91,7 @@ export default function Chats() {
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzPfZtBIi9mrbG2-nAnaa7bVHaRzqmej0uiQ&usqp=CAU"
                     alt="avatar 2"
                     style={{ width:"50px",height:"50px",borderRadius:"50%"}}
+                    data-testid="image3"
                   />
                 </div>
 
@@ -94,21 +100,24 @@ export default function Chats() {
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUAQOSkZYfkEA301YD7ScojRUNG1lAeFC1tA&usqp=CAU"
                     alt="avatar 1"
                     style={{ width:"50px",height:"50px",borderRadius:"50%"}}
+                    data-testid="image2"
                   />
                   <div>
                     <p
                       className="small p-2 ms-3 mb-1 rounded-3"
                       style={{ backgroundColor: "#f5f6f7" }}
+                      data-testid="chaty5"
                     >
                       Okay
                     </p>
                     <p
                       className="small p-2 ms-3 mb-1 rounded-3"
                       style={{ backgroundColor: "#f5f6f7" }}
+                      data-testid="chaty4"
                     >
                       We will go on Sunday?
                     </p>
-                    <p className="small ms-3 mb-3 rounded-3 text-muted">
+                    <p className="small ms-3 mb-3 rounded-3 text-muted" data-testid="timei">
                       00:07
                     </p>
                   </div>
@@ -116,13 +125,13 @@ export default function Chats() {
 
                 <div className="d-flex flex-row justify-content-end mb-4">
                   <div>
-                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" data-testid="chaty3">
                       That's awesome!
                     </p>
-                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" data-testid="chaty2">
                       I will meet you Sandon Square sharp at 10 AM
                     </p>
-                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                    <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" data-testid="chaty1">
                       Is that okay?
                     </p>
                     <p className="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">
@@ -141,6 +150,7 @@ export default function Chats() {
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUAQOSkZYfkEA301YD7ScojRUNG1lAeFC1tA&usqp=CAU"
                     alt="avatar 1"
                     style={{ width:"50px",height:"50px",borderRadius:"50%"}}
+                    data-testid="image1"
                   />
                   <div>
                     <p
@@ -217,6 +227,7 @@ export default function Chats() {
                 class="form-control form-control-lg"
                 id="exampleFormControlInput1"
                 placeholder="Type message"
+                data-testid="type"
               ></input>
               <a className="ms-1 text-muted" href="#!">
                 <MDBIcon fas icon="paperclip" />
