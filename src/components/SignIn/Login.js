@@ -7,7 +7,6 @@ import {useNavigate} from 'react-router-dom'
 import {useAuthValue} from './AuthContext' //globilise our user details
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import loginpic from "../../pic/Login.jpg"
-import TWOFA from './TWOFA'
 
 
 export function EmailCheck(email){
@@ -60,7 +59,8 @@ function Login(){
     else{
       //Confirm user using 2FA
       // <TWOFA></TWOFA>
-      navigate('/security');
+      navigate('/')
+      // navigate('/security'); currently fixing this
     }
     })
     .catch(err => setError("INVALID User INPUT"))
@@ -102,7 +102,7 @@ function Login(){
                 </div>
                 <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
                   <input 
-                    className='form-control form-control-lg'
+                    className={Loginstyle.input}
                     type='email' 
                     value={email}
                     required
@@ -112,7 +112,7 @@ function Login(){
 
                 <div className="form-outline mb-3" style={{backgroundColor: "white"}}>
                   <input
-                    className='form-control form-control-lg'
+                    className= {Loginstyle.input}
                     type='password'
                     value={password}
                     required

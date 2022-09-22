@@ -4,7 +4,7 @@ import {useNavigate, Link} from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { useAuthValue } from "./AuthContext";
-import Registerstyle from "./Register.module.css"
+import Loginstyle from "./Login.module.css"
 import loginpic from "../../pic/Login.jpg"
 
 
@@ -61,8 +61,6 @@ function Register(){
 
 //also this , just a simple form
     return(
-
-        <Routes>
          <section className="v-100" style={{backgroundColor: "gray"}} data-testid="section">
             <div className="container-fluid h-custom">
                 <div className="row d-flex justify-content-center align-items-center h-100">
@@ -72,13 +70,13 @@ function Register(){
                     </div>
 
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <h2 className={Registerstyle.title}>Welcome to Wits Social App</h2>
+                        <h2 className={Loginstyle.title}>Welcome to Wits Social App</h2>
                         <span>Register in and enjoy the service</span>
-                        {error && <div className={Registerstyle.auth_error}>{error}</div>}
+                        {error && <div className={Loginstyle.auth_error}>{error}</div>}
                         <form onSubmit={register} name ="form" className="Loginfrom" data-testid="form">
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
                                 <input
-                                    className='form-control form-control-lg'
+                                    className={Loginstyle.input}
                                     type = 'email'
                                     value = {email}
                                     placeholder = "Enter your Email address"
@@ -88,7 +86,7 @@ function Register(){
 
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
                                 <input
-                                    className='form-control form-control-lg'
+                                    className={Loginstyle.input}
                                     type = 'password'
                                     value = {password}
                                     placeholder = "Enter your Password"
@@ -97,7 +95,7 @@ function Register(){
                             </div>
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
                             <input
-                                className='form-control form-control-lg'
+                                className={Loginstyle.input}
                                 type = 'password'
                                 value = {conPassword}
                                 placeholder = "Confirm Password"
@@ -139,9 +137,6 @@ function Register(){
             </div>
         </div>
         </section>
-        </Routes>
-
-        
     )
 }
 
