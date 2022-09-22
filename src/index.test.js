@@ -14,7 +14,7 @@ describe("Checking if the test file is working", () => {
   })
 
   //test if index is rendered
-  it('render home',()=>{
+  it('render index',()=>{
     const {getByTestId}=render(<Index/>);
     expect(screen.getByTestId('app')).toBeInTheDocument();
    

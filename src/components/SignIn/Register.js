@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { auth } from "../../conf/fireconf";
 import {useNavigate, Link} from "react-router-dom"
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 import { useAuthValue } from "./AuthContext";
 import Registerstyle from "./Register.module.css"
@@ -62,7 +62,8 @@ function Register(){
 //also this , just a simple form
     return(
 
-        <section className="v-100" style={{backgroundColor: "gray"}}>
+        <Routes>
+         <section className="v-100" style={{backgroundColor: "gray"}} data-testid="section">
             <div className="container-fluid h-custom">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
@@ -74,7 +75,7 @@ function Register(){
                         <h2 className={Registerstyle.title}>Welcome to Wits Social App</h2>
                         <span>Register in and enjoy the service</span>
                         {error && <div className={Registerstyle.auth_error}>{error}</div>}
-                        <form onSubmit={register} name ="form" className="Loginfrom">
+                        <form onSubmit={register} name ="form" className="Loginfrom" data-testid="form">
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
                                 <input
                                     className='form-control form-control-lg'
@@ -118,11 +119,11 @@ function Register(){
             <div
         class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         
-        <div class="text-white mb-3 mb-md-0">
+        <div class="text-white mb-3 mb-md-0" data-testid="foot">
           Copyright © 2022. All rights reserved.
         </div>
 
-        <div>
+        <div data-testid="icons">
             <a href="#!" class="text-white me-4">
                 <i class="fab fa-facebook-f"></i>
             </a>
@@ -138,6 +139,9 @@ function Register(){
             </div>
         </div>
         </section>
+        </Routes>
+
+        
     )
 }
 
