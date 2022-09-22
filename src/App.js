@@ -26,7 +26,9 @@ function App() {
   }, [])
 
   return (
-    <Router>
+    
+   <div data-testid="app">
+     <Router>
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
           <Route exact path='/' element={
@@ -54,6 +56,8 @@ function App() {
         </Routes>  
       </AuthProvider>
   </Router>
+   </div>
+    
   );
 }
 
