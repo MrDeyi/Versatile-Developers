@@ -16,7 +16,7 @@ jobs:
           command: npm run test -- --coverage
       - codecov/upload:
           file: coverage/*.json
-          //frerf
+          
     
 
 workflow:
