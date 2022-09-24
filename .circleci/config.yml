@@ -16,13 +16,12 @@ jobs:
           command: npm run test -- --coverage
       - codecov/upload:
           file: coverage/*.json
-          
-    
 
 workflow:
   version: 2.1
   build-test:
     jobs:
       - build
+ 
  
  
