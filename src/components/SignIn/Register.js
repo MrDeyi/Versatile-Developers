@@ -29,6 +29,12 @@ function Register(){
             if(password !==  conPassword){
                 isValid = false
                 setError("Passwords do not match")
+                return isValid
+            }
+            if(password.length<6){
+                isValid = false
+                setError("Passwords should have atleast length of 6")
+                return isValid
             }
         }
         return isValid
@@ -55,8 +61,8 @@ function Register(){
 
         //also this
         setEmail('')
-        // setPassword('')
-        // setConPassword('')
+        setPassword('')
+        setConPassword('')
     }
 
 //also this , just a simple form
