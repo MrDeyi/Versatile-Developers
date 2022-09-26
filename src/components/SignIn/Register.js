@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { auth } from "../../conf/fireconf";
+import { auth ,createUserDocument} from "../../conf/fireconf";
 import {useNavigate, Link} from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
@@ -29,6 +29,12 @@ function Register(){
             if(password !==  conPassword){
                 isValid = false
                 setError("Passwords do not match")
+                return isValid
+            }
+            if(password.length<6){
+                isValid = false
+                setError("Passwords should have atleast length of 6")
+                return isValid
             }
         }
         return isValid
@@ -46,6 +52,7 @@ function Register(){
                 .then(() =>{
                     //registered
                     // setTimeActive(true)
+                    createUserDocument(auth.currentUser,"Mrdatabase")
                     navigate('/verify-email')
                 }).catch((err) => alert("Connection Error Please TRY again!!"))
             })
@@ -55,8 +62,8 @@ function Register(){
 
         //also this
         setEmail('')
-        // setPassword('')
-        // setConPassword('')
+        setPassword('')
+        setConPassword('')
     }
 
 //also this , just a simple form
