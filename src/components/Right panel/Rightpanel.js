@@ -5,7 +5,7 @@ import './Rightpanel.css'
 import ReactPlayer from 'react-player'
 import { useAuthValue } from '../SignIn/AuthContext';
 import { signOut } from 'firebase/auth';
-import { auth } from '../../conf/fireconf';
+import { auth,db } from '../../conf/fireconf';
 import User_P from "../../pic/user.png"
 
 import Edit_P from "../../pic/edit.jpg"
@@ -25,7 +25,7 @@ import { ReactComponent as User_picture } from "../../pic/user.png";
 import {useNavigate} from 'react-router-dom'
 
 import React, { useState, useEffect, useRef } from 'react';
-
+import { collection,addDoc } from 'firebase/firestore';
 
 function SignOut(){
    signOut(auth)
@@ -36,6 +36,14 @@ function Rightpanel() {
    const {currentUser} = useAuthValue()
    function Update(){
       navigate('/update')
+
+      //testing somethng
+      //this works
+
+      /*const docref = addDoc(collection(db,"Test"),{
+         data:"hello"
+      });*/
+
    }
   return (
     
