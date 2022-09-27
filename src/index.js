@@ -3,13 +3,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-<<<<<<< HEAD
-
 import Home from './components/Home/home.js';
-=======
-// import reportWebVitals from './reportWebVitals';
-// import Home from './components/Home/home.js';
->>>>>>> c1af77d5cd972e84faeb1102d8bea6b361c1582d
 // Importing the Bootstrap CSS
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
