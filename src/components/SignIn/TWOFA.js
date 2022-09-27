@@ -10,17 +10,17 @@ import { auth } from '../../conf/fireconf'
 function TWOFA() {
 
   // const form = useRef();
-  const [conf,setConf] = useState('');
+ /* const [conf,setConf] = useState('');
   const [pin,setPin] = useState('');
   const {currentUser} = useAuthValue();
   const [time, setTime] = useState(60)
-  const {timeActive, setTimeActive} = useAuthValue()
-  const navigate = useNavigate();
+  const {timeActive, setTimeActive} = useAuthValue()*/
+  //const navigate = useNavigate();
 
-  const email = currentUser?.email;
+ // const email = currentUser?.email;
 
 
-  useEffect(()=>{
+ /* useEffect(()=>{
 
     function generatePassword() {
       var length = 6,
@@ -68,19 +68,19 @@ function TWOFA() {
       navigate('/login')
     }
 
-  }
+  }*/
 
   return (
-    <div className={TWO.box}>
-      <h2 className={TWO.h2}>Wits Social App Verification</h2>
-      <h1 className={TWO.h1}>for your security, we want to make sure it's really you,We have sent 6 code to your email</h1>
+    <div className={TWO.box} data-testid="two">
+      <h2 className={TWO.h2} data-testid="wits">Wits Social App Verification</h2>
+      <h1 className={TWO.h1} data-testid="make">for your security, we want to make sure it's really you,We have sent 6 code to your email</h1>
       <input
         className={TWO.input} 
         type ="text"
         placeholder='Enter 6 code digit'
-        onChange={e=>setConf(e.target.value)}>
+        >
       </input>
-      <button className={TWO.button} onClick={Confirm}>Confirm PIN</button>
+      <button className={TWO.button} >Confirm PIN</button>
     </div>
   ); 
 };
