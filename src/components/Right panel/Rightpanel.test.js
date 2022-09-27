@@ -14,7 +14,7 @@ describe("Checking if the test file is working", () => {
   })
 
   //test if friend is rendered
-  /*it('render friend',()=>{
+  it('render friend',()=>{
     const {getByTestId}=render(<Rightpanel />);
     expect(screen.getByTestId('tiktok')).toBeInTheDocument();
     expect(screen.getByTestId('video')).toBeInTheDocument();
@@ -23,4 +23,4 @@ describe("Checking if the test file is working", () => {
     expect(screen.getByTestId('comments')).toBeInTheDocument();
     expect(screen.getByTestId('space')).toBeInTheDocument();
   
-  }) */
+  }) 

@@ -1,4 +1,4 @@
-
+import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import Register from './components/SignIn/Register';
@@ -12,7 +12,6 @@ import {AuthProvider} from './components/SignIn/AuthContext'
 import {Navigate} from 'react-router-dom'
 import ForgotPassword from './components/SignIn/Forgot_Password';
 import TWOFA from './components/SignIn/TWOFA';
-import UpdateProfile from './components/SignIn/UpdateProfile';
 
 
 function App() {
@@ -54,7 +53,6 @@ function App() {
            />
           <Route path='/verify-email' element={<VerifyEmail/>} /> 
           <Route path='/security' element ={<TWOFA/>}/>
-          <Route path='/update' element ={<UpdateProfile/>}/>
         </Routes>  
       </AuthProvider>
   </Router>
