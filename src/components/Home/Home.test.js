@@ -14,8 +14,8 @@ describe("Checking if the test file is working", () => {
   })
 
   //test if home is rendered
-  it('render home',()=>{
+ /* it('render home',()=>{
     const {getByTestId}=render(<Home/>);
     expect(screen.getByTestId('home')).toBeInTheDocument();
   
-  })
+  })*/
