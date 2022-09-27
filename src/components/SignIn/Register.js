@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { auth ,createUserDocument} from "../../conf/fireconf";
+import { auth } from "../../conf/fireconf";
 import {useNavigate, Link} from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
@@ -52,7 +52,6 @@ function Register(){
                 .then(() =>{
                     //registered
                     // setTimeActive(true)
-                    createUserDocument(auth.currentUser,"Mrdatabase")
                     navigate('/verify-email')
                 }).catch((err) => alert("Connection Error Please TRY again!!"))
             })
