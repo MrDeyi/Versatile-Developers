@@ -6,7 +6,11 @@ import Home from '../../components/Home/home.js'
 
 function Profile() {
     return(
-    <Home/>
+     <div data-testid="profile">
+      <Home/>
+     </div>
+
+    
     )
 }
 
