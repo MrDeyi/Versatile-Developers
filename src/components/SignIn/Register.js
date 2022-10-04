@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { auth ,createUserDocument} from "../../conf/fireconf";
+import { auth} from "../../conf/fireconf";
 import {useNavigate, Link} from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import {createUserWithEmailAndPassword, sendEmailVerification,updateProfile} from 'firebase/auth'
 import { useAuthValue } from "./AuthContext";
 import Loginstyle from "./Login.module.css"
 import loginpic from "../../pic/Login.jpg"
@@ -48,11 +48,21 @@ function Register(){
         if(validatePassword()){
             createUserWithEmailAndPassword(auth,email,password)
             .then(() =>{
+                // const user  = auth.currentUser
+                updateProfile(auth.currentUser, {
+                    displayName: "Database", photoURL: "https://i.postimg.cc/G29qBYLZ/Screenshot-20.png"
+                  }).then(() => {
+                    // Profile updated!
+                    // ...
+                  }).catch((error) => {
+                    // An error occurred
+                    // ...
+                  });
                 sendEmailVerification(auth.currentUser)
                 .then(() =>{
                     //registered
                     // setTimeActive(true)
-                    createUserDocument(auth.currentUser,"Mrdatabase")
+                    // createUserDocument(auth.currentUser,"Mrdatabase")
                     navigate('/verify-email')
                 }).catch((err) => alert("Connection Error Please TRY again!!"))
             })

@@ -34,6 +34,7 @@ function Rightpanel() {
 
    const navigate = useNavigate()
    const {currentUser} = useAuthValue()
+   const img = currentUser.photoURL;
    function Update(){
       navigate('/update')
 
@@ -62,8 +63,13 @@ function Rightpanel() {
          </Navitems>
       </Navbar>
       <div className='profile'>
-         <h1>Profile</h1>
+
+         <div>
+            <img src={img} alt="image" className='userp'/>
+         </div>
          <p><strong>Email: </strong>{currentUser?.email}</p>
+         <p><strong>Name: </strong>{currentUser?.displayName}</p>
+         {/* <p><strong>phoneNumber: </strong>{currentUser?.phoneNumber}</p> */}
          <p>
             <strong>Email verified: </strong>
             {`${currentUser?.emailVerified}`}
