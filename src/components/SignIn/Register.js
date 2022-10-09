@@ -12,7 +12,7 @@ export const CorrectEmail = (str = "") => str.includes('@');
 
 function Register(){
 
-    //Declare some state variable...
+   /* //Declare some state variable...
     const[email,setEmail] = useState('')
     const[password, setPassword] = useState('')
     const[conPassword, setConPassword] = useState('')
@@ -59,7 +59,7 @@ function Register(){
         // setConPassword('')
     }
 
-//also this , just a simple form
+//also this , just a simple form*/
     return(
          <section className="v-100" style={{backgroundColor: "gray"}} data-testid="section">
             <div className="container-fluid h-custom">
