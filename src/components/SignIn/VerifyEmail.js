@@ -9,18 +9,18 @@ import './styleform.css'
 
 
 
-export function AuthContextEmail(){
+/*export function AuthContextEmail(){
   const {user} = "Mosis"
   return user? 'Hello there ${user}' : "Please Login";
 }
 
 export function EmailCheck(email){
   return email.includes('@');
-}
+}*/
  
 function VerifyEmail() {
 
-  const {currentUser} = useAuthValue()
+ /* const {currentUser} = useAuthValue()
   const [time, setTime] = useState(60)
   const {timeActive, setTimeActive} = useAuthValue()
   const navigate = useNavigate()
@@ -62,7 +62,7 @@ function VerifyEmail() {
       alert(err.message)
     })
   }
-
+*/
   return (
     <div className='center'>
       <div className='verifyEmail'>
