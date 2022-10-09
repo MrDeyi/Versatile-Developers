@@ -17,10 +17,10 @@ import { Link } from 'react-router-dom'
 
 function Rightpanel() {
 
-   const hide = e=>{
+ /*  const hide = e=>{
       const toggleMenu = document.querySelector(".menu");
       toggleMenu.classList.toggle("active")
-  }
+  }*/
 
 
   return (
@@ -29,9 +29,9 @@ function Rightpanel() {
       {/* <div className='action'> */}
          <div 
             className='prof' 
-            onClick={()=>{
+           /* onClick={()=>{
                signOut(auth)
-            }}>
+            }}*/>
             <img 
                src={User_P} 
                alt='User' 
