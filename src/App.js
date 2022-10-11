@@ -13,6 +13,7 @@ import {Navigate} from 'react-router-dom'
 import ForgotPassword from './components/SignIn/Forgot_Password';
 import TWOFA from './components/SignIn/TWOFA';
 import UpdateProfile from './components/SignIn/UpdateProfile';
+import ViewProfile from './components/SignIn/ViewProfile';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path='/verify-email' element={<VerifyEmail/>} /> 
           <Route path='/security' element ={<TWOFA/>}/>
           <Route path='/update' element ={<UpdateProfile/>}/>
+          <Route path='/viewupdate' element ={<ViewProfile/>}/>
         </Routes>  
       </AuthProvider>
   </Router>

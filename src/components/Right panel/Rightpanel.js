@@ -37,14 +37,10 @@ function Rightpanel() {
    const img = currentUser.photoURL;
    function Update(){
       navigate('/update')
+   }
 
-      //testing somethng
-      //this works
-
-      /*const docref = addDoc(collection(db,"Test"),{
-         data:"hello"
-      });*/
-
+      function View(){
+      navigate('/viewupdate')
    }
   return (
     
@@ -75,6 +71,7 @@ function Rightpanel() {
             {`${currentUser?.emailVerified}`}
          </p>
          <button onClick={Update}>Edit Profile</button>
+         <button onClick={View}> Profile</button>
       </div>
       
          <div className='tiktok' data-testid="tiktok">

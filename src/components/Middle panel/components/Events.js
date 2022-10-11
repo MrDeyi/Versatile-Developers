@@ -4,12 +4,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FcShare,FcLike,FcGoogle } from "react-icons/fc";
 import { useState } from 'react';
+import { RWebShare } from "react-web-share";
 
 const EventComponent = ({event}) => {
     const [counter, setCounter] = useState(23);
+    const [sharenum, setsharenum] = useState(34);
         const getalikes=()=>{
             setCounter(counter + 1);
         }
+        const getashares=()=>{
+            setsharenum(sharenum + 1);
+            
+        }
+       
 
     return (
         <div className="cardp">
@@ -49,8 +56,22 @@ const EventComponent = ({event}) => {
             </div>
 
             <div className="card_share_icon">
-                <FcShare />
-                <p data-testid="numShares">{ event.shares}</p>
+                
+                 
+                 <RWebShare
+                 data={{
+                   text: "Like humans, flamingos make friends for life",
+                   url: "https://on.natgeo.com/2zHaNup",
+                   title: event.event_title,
+                 }}
+                 
+                 onClick={getashares}
+               >
+                 <FcShare />
+               
+                
+               </RWebShare> 
+               <p data-testid="numShares">{sharenum}</p>
             </div>
         </div>
     </div>
