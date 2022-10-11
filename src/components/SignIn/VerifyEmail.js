@@ -72,11 +72,11 @@ function VerifyEmail() {
           <span>{currentUser?.email}</span>
         </p>
         <span>Follow the instruction in the email to verify your account</span>       
-        <button 
+        {/*<button 
           className='button'
           onClick={resendEmailVerification}
           disabled={timeActive}
-        >Resend Email {timeActive && time}</button>
+  >Resend Email {timeActive && time}</button>*/}
       </div>
     </div>
   )
