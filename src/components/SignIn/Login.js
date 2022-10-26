@@ -21,7 +21,7 @@ function Login(){
   const [error, setError] = useState('')
   const [user,setUser] = useState('')
   
-  const {setTimeActive} = useAuthValue()
+  // const {setTimeActive} = useAuthValue()
   const navigate = useNavigate()
 
   const provider = new GoogleAuthProvider()
@@ -48,22 +48,22 @@ function Login(){
             navigate him to verify(/verify-email) 
             else Profile(/)
         */
-       if(!auth.currentUser.emailVerified) {
-        sendEmailVerification(auth.currentUser)
-        .then(() => {
-          setTimeActive(true)
-          navigate('/verify-email')
-        })
-      .catch(err => alert("Connection Error Please TRY again!!"))
-    }
-    else{
+    //    if(!auth.currentUser.emailVerified) {
+    //     sendEmailVerification(auth.currentUser)
+    //     .then(() => {
+    //       // setTimeActive(true)
+    //       // navigate('/verify-email')
+    //     })
+    //   .catch(err => alert("Connection Error Please TRY again!!"))
+    // }
+    // else{
       //Confirm user using 2FA
       // <TWOFA></TWOFA>
       navigate('/')
       // navigate('/security'); currently fixing this
-    }
+    // }
     })
-    .catch(err => setError("INVALID User INPUT"))
+    // .catch(err => setError("INVALID User INPUT"))
   }
 
   //a simple log in page
@@ -100,7 +100,7 @@ function Login(){
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0">or</p>
                 </div>
-                <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
+                <div className="form-outline mb-4" style={{backgroundColor: "black"}}>
                   <input 
                     className={Loginstyle.input}
                     type='email' 

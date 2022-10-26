@@ -1,0 +1,21 @@
+.search {
+    border-bottom: 1px solid gray;
+    color: rgb(9, 9, 9);
+  }
+  
+  .search .searchForm {
+    padding: 10px;
+    color: rgb(0, 0, 0);
+  }
+
+  .searchForm input {
+    background-color: transparent;
+    border: none;
+    color: rgb(9, 9, 9);
+    outline: none;
+
+  }
+
+  input::placeholder {
+    color: rgb(0, 0, 0);
+  }

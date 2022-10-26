@@ -28,7 +28,8 @@ export const db = getFirestore(app);
 export const storage = getStorage(app);
 // Create a storage reference from our storage service
 export const storageref = ref(storage)
-const auth = getAuth(app);
-export {auth};
+// Get current user
+export const auth = getAuth(app);
+// export {auth};
 
 // export default app;

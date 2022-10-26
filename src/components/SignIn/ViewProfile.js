@@ -3,9 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuthValue } from "./AuthContext"
 import {useNavigate,Link} from 'react-router-dom'
 import { getAuth,updateProfile,updateEmail,updatePassword } from "firebase/auth"
-import userP from "../../pic/Mosis_.png"
-import { auth } from "../../conf/fireconf"
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 import './ViewProfile.css'
 function ViewProfile(){
 
@@ -32,11 +30,6 @@ function ViewProfile(){
     const user = auth.currentUser;
 
     //for uploading user_photo
-    const storage = getStorage();
-
-    const metadata = {
-      contentType: 'image/jpeg'
-    };
 
     useEffect(()=>{
       fetch(`http://localhost:4000/${user.email}`)

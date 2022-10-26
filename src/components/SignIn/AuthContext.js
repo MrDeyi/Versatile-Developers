@@ -18,7 +18,7 @@ export function AuthProvider({children, value}) {
   )
 }
 
-/* 
+/*
  This function allows us to easily have an access to the value
  passed in the above function.
 */

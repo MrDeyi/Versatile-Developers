@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { auth} from "../../conf/fireconf";
+import { auth,db} from "../../conf/fireconf";
 import {useNavigate, Link} from "react-router-dom"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {createUserWithEmailAndPassword, sendEmailVerification,updateProfile} from 'firebase/auth'
 import { useAuthValue } from "./AuthContext";
 import Loginstyle from "./Login.module.css"
 import loginpic from "../../pic/Login.jpg"
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 
 export const CorrectEmail = (str = "") => str.includes('@');
@@ -17,10 +18,10 @@ function Register(){
     const[password, setPassword] = useState('')
     const[conPassword, setConPassword] = useState('')
     const[error, setError] = useState('')
+    const [loading, setLoading] = useState(false);
 
     //store the user globally
     const navigate = useNavigate();
-    const {setTimeActive} = useAuthValue
 
     //Check Password and confrim_Password if they match
     const validatePassword = () =>{
@@ -42,43 +43,83 @@ function Register(){
 
     // register the user
     // will change this later for specified error
-    const register = e => {
+    const register = async (e) => {
+        setLoading(true);
         e.preventDefault()
         setError('')
         if(validatePassword()){
-            createUserWithEmailAndPassword(auth,email,password)
-            .then(() =>{
-                // const user  = auth.currentUser
-                updateProfile(auth.currentUser, {
-                    displayName: "Database", photoURL: "https://i.postimg.cc/G29qBYLZ/Screenshot-20.png"
-                  }).then(() => {
-                    // Profile updated!
-                    // ...
-                  }).catch((error) => {
-                    // An error occurred
-                    // ...
-                  });
-                sendEmailVerification(auth.currentUser)
-                .then(() =>{
-                    //registered
-                    // setTimeActive(true)
-                    // createUserDocument(auth.currentUser,"Mrdatabase")
-                    navigate('/verify-email')
-                }).catch((err) => alert("Connection Error Please TRY again!!"))
-            })
-            //network error
-            .catch(err => setError("User EXISTs Please Log in if you have an ACCOUNT!!"))
-        }
+            // try{
+          const res =  await createUserWithEmailAndPassword(auth,email,password);
+          try {
+            //Update profile
+            updateProfile(res.user, {
+                displayName: "New User",
+                photoURL: "https://i.postimg.cc/vB4kbnMM/default-avatar.png",
+            });
+            //create user on firestore
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName: "New User",
+              email,
+              photoURL: "https://i.postimg.cc/vB4kbnMM/default-avatar.png",
+            username:"",
+            firstname:"",
+            lastname:"",
+            orgname:"",
+            location:"",
+            phonenumber:"",
+            birthday:""
+            });
 
-        //also this
-        setEmail('')
-        setPassword('')
-        setConPassword('')
+            //create empty user chats on firestore
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+            navigate("/");
+          } catch (err) {
+            console.log(err);
+            // setErr(true);
+            setLoading(false);
+          }
+
+            // .then(async() =>{
+            //     // const user  = auth.currentUser
+            //     await updateProfile(auth.currentUser, {
+            //         displayName: "N0 Name", photoURL: "https://i.postimg.cc/vB4kbnMM/default-avatar.png"
+            //       });
+
+            //       await setDoc(doc(db, "users", res.user.uid), {
+            //         uid: res.user.uid,
+            //         displayName: "N0 Name",
+            //         email,
+            //         photoURL: "https://i.postimg.cc/vB4kbnMM/default-avatar.png",
+
+            //       });
+
+            //       await setDoc(doc(db, "userChats",  res.user.uid), {
+
+            //       });
+            //       navigate("/");
+            //     // sendEmailVerification(auth.currentUser)
+            //     // .then(async () =>{
+            //     //     //registered
+            //     //     // setTimeActive(true)
+            //     //     // navigate('/verify-email')
+            //     // }).catch((err) => alert(err),setLoading(false))
+                  
+            // })
+            //network error
+            // .catch(err => setError("User EXISTs Please Log in if you have an ACCOUNT!!")
+            // ,setLoading(false))
+            setEmail('')
+            setPassword('')
+            setConPassword('')
+        }
+    
+       
     }
 
 //also this , just a simple form
     return(
-         <section className="v-100" style={{backgroundColor: "gray"}} data-testid="section">
+         <section className="v-100" style={{backgroundColor: "white"}} data-testid="section">
             <div className="container-fluid h-custom">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
@@ -89,6 +130,7 @@ function Register(){
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <h2 className={Loginstyle.title}>Welcome to Wits Social App</h2>
                         <span>Register in and enjoy the service</span>
+                        {loading && "please wait..."}
                         {error && <div className={Loginstyle.auth_error}>{error}</div>}
                         <form onSubmit={register} name ="form" className="Loginfrom" data-testid="form">
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>

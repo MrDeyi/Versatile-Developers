@@ -6,7 +6,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './People.css'
 import { db } from '../../../conf/fireconf'
-import React, {useState, useEffect} from 'react';
+import {onSnapshot } from "firebase/firestore";
+import { AuthContext } from "../../../context/AuthContext";
+import { ChatContext } from "../../../context/ChatContext";
+import React, {useState, useEffect,useContext} from 'react';
 import { async } from '@firebase/util';
 import {
     doc, 
@@ -27,38 +30,46 @@ const addFriend = async (friend) => {
 
 
 
+
 function Display() {
-    const [ users, setUsers] = useState([])
+  const [chats, setChats] = useState([]);
 
-    useEffect(() => {      
-        const getPeople = async () => {
-            const REF_COLLECTION = collection(db, "Contacts"); // reference the collection
-            await getDocs(REF_COLLECTION)
-                .then((response) => {
-                    setUsers(response.docs.map( (user) => {
-                            return {...user.data(), id: user.id}
-                        }))
-                })
-                .catch((err) => console.log(err.message))
-        }
-        getPeople()
-    }, []);
+  const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        setChats(doc.data());
+      });
+
+      return () => {
+        unsub();
+      };
+    };
+
+    currentUser.uid && getChats();
+  }, [currentUser.uid]);
     
+  const handleSelect = (u) => {
+    dispatch({ type: "CHANGE_USER", payload: u });
+  };
+
 
   return (
     <Container style={{ width: '100%',height:'100%' }}>
       <Row>
-      {users.map(post=>(
-         <Card style={{ width: '12rem',margin:'0.5rem'  }}>
-         <Card.Img variant="top" src={post.photo} className='imgperson' />
+      {Object.entries(chats)?.map((chat) => (
+        
+           <Card style={{ width: '12rem',margin:'0.5rem'  }}>
+         <Card.Img variant="top" src={chat[1].userInfo.photoURL} className='imgperson' />
          <Card.Body>
-           <Card.Title>{post.username}</Card.Title>
-           <Button onClick={ event => addFriend(post) } variant="primary">follow</Button>
+           <Card.Title>{chat[1].userInfo.displayName}</Card.Title>
+           <Button onLoad={() => handleSelect(chat[1].userInfo)} variant="primary">Unfollow</Button>
          </Card.Body>
          </Card>
-        ))
-        }
+     
+      ))}
         </Row>    
      </Container>
   );

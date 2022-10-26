@@ -1,13 +1,12 @@
-import React from 'react'
-import './Your_group.css'
 import Card from 'react-bootstrap/Card';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './People.css'
 import { db } from '../../../conf/fireconf'
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { async } from '@firebase/util';
 import {
     doc, 
@@ -19,10 +18,16 @@ import {
     deleteDoc
 } from "firebase/firestore"; 
 
+const addFriend = async (friend) => {
+    const REF_COLLECTION = collection(db, "Friend");
+    addDoc(REF_COLLECTION, friend)
+    .then(() => console.log("Data was saved"))
+    .catch((err) => console.log(err.message))
+}
 
 
-function Your_groups() {
 
+function Public_Groups() {
     const [ users, setUsers] = useState([])
 
     useEffect(() => {      
@@ -39,18 +44,24 @@ function Your_groups() {
         getPeople()
     }, []);
 
+    
+
   return (
-    <div className="your_groups">
-       <div className="header" data-testid="separator">Your Groups</div><br/>
-        {users.map(post=>(
-          <div className="Single_friend">
-          <img className="imgp" src={post.photo} alt=""/>
-           <span className="span">{post.name}</span>
-          </div>
+    <Container style={{ width: '100%',height:'100%' }}>
+      <Row>
+      {users.map(post=>(
+         <Card style={{ width: '12rem',margin:'0.5rem'  }}>
+         <Card.Img variant="top" src={post.photo} className='imgperson' />
+         <Card.Body>
+           <Card.Title>{post.name}</Card.Title>
+           <Button onClick={ event => addFriend(post) } variant="primary">follow</Button>
+         </Card.Body>
+         </Card>
         ))
         }
-    </div>
-  )
+        </Row>    
+     </Container>
+  );
 }
 
-export default Your_groups
+export default Public_Groups;
