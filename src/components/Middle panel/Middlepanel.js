@@ -73,7 +73,7 @@ function Middlepanel() {
    
             <Status/>
             <div className="display" style={{ width: '98%',height:'78%', backgroundColor: "lightblue",margin:'10px', padding:0 ,overflow: 'auto'}}>
-     
+     //this is for commits 
               {freinds && <People />} 
               {home && <Events.Events />}
               {bus && <Bus />}
