@@ -12,7 +12,7 @@ import { useState } from 'react';
 import Bus from './components/Bus.js';
 import Chats from './components/Chats';
 import Public_Groups from './components/Public_Groups';
-
+//This is ehre the feed and ervents are found.
 function Middlepanel() {
     const [home,setHome]=useState(true);
     const [freinds,setFreinds]=useState(false);
