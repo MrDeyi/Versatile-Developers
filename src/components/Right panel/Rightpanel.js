@@ -1,7 +1,7 @@
 import './Rightpanel.css'
 import ReactPlayer from 'react-player'
 import { AuthContext } from '../../context/AuthContext';
-import { signOut ,deleteUser} from 'firebase/auth';
+import { signOut ,deleteUser,getAuth} from 'firebase/auth';
 import { auth} from '../../conf/fireconf';
 import { ReactComponent as BellIcon } from '../../icons/bell.svg';
 import { ReactComponent as MessengerIcon } from '../../icons/messenger.svg';
@@ -24,6 +24,8 @@ function Rightpanel() {
 
    const navigate = useNavigate()
    const {currentUser} =  useContext(AuthContext)
+   const aut = getAuth();
+   const user = aut.currentUser;
    // const img = currentUser.photoURL;
    function Update(){
       navigate('/update')
@@ -38,7 +40,7 @@ function Rightpanel() {
    }
 
    function DeleteUser(){
-      deleteUser(currentUser).then(() => {
+      deleteUser(user).then(() => {
          // User deleted.
          navigate('/')
        }).catch((error) => {

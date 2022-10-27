@@ -6,28 +6,58 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './People.css'
 import { db } from '../../../conf/fireconf'
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,useContext} from 'react';
 import { async } from '@firebase/util';
 import {
-    doc, 
-    addDoc,
-    setDoc, 
+    addDoc, 
     collection, 
     getDocs,
-    query,
-    deleteDoc
+    deleteDoc,
+    arrayUnion,
+  doc,
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
 } from "firebase/firestore"; 
+import { v4 as uuid } from "uuid";
+import { AuthContext } from "../../../context/AuthContext";
 
-const addFriend = async (friend) => {
-    const REF_COLLECTION = collection(db, "Friend");
-    addDoc(REF_COLLECTION, friend)
-    .then(() => console.log("Data was saved"))
-    .catch((err) => console.log(err.message))
+
+
+// const addFriend = async (friend) => {
+  
+//     const REF_COLLECTION = collection(db, "Friend");
+//     addDoc(REF_COLLECTION, friend)
+//     .then(() => console.log("Data was saved"))
+//     .catch((err) => console.log(err.message))
+
+//     await updateDoc(doc(db, "chats", data.chatId), {
+//       messages: arrayUnion({
+//         id: uuid(),
+//         text,
+//         senderId: currentUser.uid,
+//         date: Timestamp.now(),
+//       }),
+//     });
+// }
+
+
+async function AddGroup(group,user){
+  console.log(user.uid)
+  console.log(group)
+  const g_id = group.id;
+  const final = user.uid+g_id;
+  
+  await updateDoc(doc(db, "UserGroups",user.uid), {
+   [final+".groupinfo"]:{
+    id:group.id,
+    name:group.name,
+    photo:group.photo
+   }
+  });
 }
-
-
-
 function Public_Groups() {
+  const { currentUser } = useContext(AuthContext);
     const [ users, setUsers] = useState([])
 
     useEffect(() => {      
@@ -54,7 +84,9 @@ function Public_Groups() {
          <Card.Img variant="top" src={post.photo} className='imgperson' />
          <Card.Body>
            <Card.Title>{post.name}</Card.Title>
-           <Button onClick={ event => addFriend(post) } variant="primary">follow</Button>
+           <Button onClick={()=>{
+             AddGroup(post,currentUser)
+          }  } variant="primary">follow</Button>
          </Card.Body>
          </Card>
         ))

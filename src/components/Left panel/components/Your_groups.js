@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useContext}from 'react'
 import './Your_group.css'
 import Card from 'react-bootstrap/Card';
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { db } from '../../../conf/fireconf'
+import { auth, db } from '../../../conf/fireconf'
 import {useState, useEffect} from 'react';
 import { async } from '@firebase/util';
 import {
@@ -16,36 +16,46 @@ import {
     collection, 
     getDocs,
     query,
-    deleteDoc
+    deleteDoc,getDoc
 } from "firebase/firestore"; 
+import { AuthContext } from '../../../context/AuthContext';
+import {  onSnapshot } from "firebase/firestore";
+
 
 
 
 function Your_groups() {
-
+  const { currentUser } = useContext(AuthContext);
     const [ users, setUsers] = useState([])
 
-    useEffect(() => {      
-        const getPeople = async () => {
-            const REF_COLLECTION = collection(db, "Groups"); // reference the collection
-            await getDocs(REF_COLLECTION)
-                .then((response) => {
-                    setUsers(response.docs.map( (user) => {
-                            return {...user.data(), id: user.id}
-                        }))
-                })
-                .catch((err) => console.log(err.message))
-        }
-        getPeople()
-    }, []);
+    const [groupss, setgroup] = useState([]);
+  // const { data } = useContext(ChatContext);
+
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "UserGroups", currentUser.uid), (doc) => {
+        setgroup(doc.data());
+      });
+
+      return () => {
+        unsub();
+      };
+    };
+
+    currentUser.uid && getChats();
+  }, [currentUser.uid]);
+
+  console.log(groupss)
+   
 
   return (
     <div className="your_groups">
        <div className="header" data-testid="separator">Your Groups</div><br/>
-        {users.map(post=>(
+        {Object.entries(groupss)?.map((groups) => (
+
           <div className="Single_friend">
-          <img className="imgp" src={post.photo} alt=""/>
-           <span className="span">{post.name}</span>
+          <img className="imgp" src={groups[1].groupinfo.photo} alt=""/>
+           <span className="span">{groups[1].groupinfo.name}</span>
           </div>
         ))
         }

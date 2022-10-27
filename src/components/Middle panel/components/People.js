@@ -18,7 +18,7 @@ import {
     collection, 
     getDocs,
     query,
-    deleteDoc
+    deleteDoc,updateDoc, deleteField
 } from "firebase/firestore"; 
 
 const addFriend = async (friend) => {
@@ -50,9 +50,22 @@ function Display() {
 
     currentUser.uid && getChats();
   }, [currentUser.uid]);
+
+  console.log(chats)
     
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
+
+    let unfollow = u[0];
+    const unsub = (doc(db, "userChats", currentUser.uid));
+    updateDoc(unsub, {
+        [unfollow] : deleteField()
+      }).then(() => {
+        console.log("Code Field has been deleted successfully");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
   };
 
 
@@ -65,7 +78,7 @@ function Display() {
          <Card.Img variant="top" src={chat[1].userInfo.photoURL} className='imgperson' />
          <Card.Body>
            <Card.Title>{chat[1].userInfo.displayName}</Card.Title>
-           <Button onLoad={() => handleSelect(chat[1].userInfo)} variant="primary">Unfollow</Button>
+           <Button onClick={() => handleSelect(chat)} variant="primary">Unfollow</Button>
          </Card.Body>
          </Card>
      
