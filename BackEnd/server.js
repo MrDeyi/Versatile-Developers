@@ -16,8 +16,9 @@ const User = {
 //Create a User
 app.post('/RegisterUser',async(req,res)=>{
     try{
-        const id = req.body.email
+        const id = req.body.uid
         const UserJson = {
+            uid:req.body.uid,
             email:req.body.email,
             username:req.body.username,
             firstname:req.body.firstname,
@@ -25,9 +26,11 @@ app.post('/RegisterUser',async(req,res)=>{
             orgname:req.body.orgname,
             location:req.body.location,
             phonenumber:req.body.phonenumber,
-            birthday:req.body.birthday
+            birthday:req.body.birthday,
+            displayName:req.body.displayName,
+            photoURL: req.body.photoURL,
         };
-        const response = await db.collection("Users").doc(id).set(UserJson);
+        const response = await db.collection("users").doc(id).set(UserJson);
         res.send(response);
     }catch(error){
         res.send(error);
@@ -37,7 +40,7 @@ app.post('/RegisterUser',async(req,res)=>{
 //Post Events
 app.post('/Event',async(req,res)=>{
     try{
-        // console.log(req.body);
+        // const id = req.body.id;
         const EventJason = {
             id: req.body.id,
             person_img: req.body.person_img,
@@ -52,7 +55,7 @@ app.post('/Event',async(req,res)=>{
             description: req.body.description,
             participants: req.body.participants,
             likes: req.body.likes,
-            share: req.body.shares
+            share: req.body.share
         };
         const response = db.collection("Events").add(EventJason);
         res.send(response);
@@ -89,6 +92,23 @@ app.post('/Friend',async(req,res)=>{
 
         };
         const respose = db.collection("Friend").add(ContactJson);
+        res.send(respose);
+    }
+    catch(error){
+        res.send(error);
+    }
+})
+
+//Post Groups
+app.post('/Groups',async(req,res)=>{
+    try{
+        const ContactJson = {
+            id : req.body.id,
+            username : req.body.name,
+            photo : req.body.photo
+
+        };
+        const respose = db.collection("Groups").add(ContactJson);
         res.send(respose);
     }
     catch(error){
@@ -150,12 +170,29 @@ app.get('/GetFriend',(req,res)=>{
         }
     })()
 })
+
+app.get('/GetGroup',(req,res)=>{
+    (async()=>{
+        try{
+            let response = [];
+            await db.collection("Groups").get().then(QuerySnapshot=>{
+                let docs = QuerySnapshot.docs;
+                for(let doc of docs){
+                    response.push(doc.data());
+                }
+                return res.status(200).send(response);
+            })
+        }catch(error){
+            return res.status(500).send(error);
+        }
+    })()
+})
 //Get all Users
 app.get('/',(req,res)=>{
     (async()=>{
         try{
             let response = []
-            await db.collection("Users").get().then(QuerySnapshot=>{
+            await db.collection("users").get().then(QuerySnapshot=>{
                 let docs = QuerySnapshot.docs;
 
                 for(let doc of docs){
@@ -173,7 +210,7 @@ app.get('/',(req,res)=>{
 app.get("/:id",(req,res)=>{
     (async()=>{
         try{
-            const userRef = db.collection("Users").doc(req.params.id);
+            const userRef = db.collection("users").doc(req.params.id);
             const response = await userRef.get();
             res.send(response.data());
         }catch(error){
@@ -196,7 +233,7 @@ app.post('/UpdateUser',async(req,res)=>{
             phonenumber:req.body.phonenumber,
             birthday:req.body.birthday
         };
-        const response =await db.collection("Users").doc(id).set(UserJson);
+        const response =await db.collection("users").doc(id).set(UserJson);
         res.send(response);
     }catch(error){
         res.send(error);
@@ -206,7 +243,7 @@ app.post('/UpdateUser',async(req,res)=>{
 //Delete User
 app.delete('/DeleteUser/:id',async(req,res)=>{
     try{
-        const response = await db.collection("Users").doc(req.params.id).delete();
+        const response = await db.collection("users").doc(req.params.id).delete();
         res.send(response);
     }catch(error){
         res.send(error);
