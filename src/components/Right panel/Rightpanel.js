@@ -26,7 +26,7 @@ function Rightpanel() {
    const {currentUser} =  useContext(AuthContext)
    const aut = getAuth();
    const user = aut.currentUser;
-   // const img = currentUser.photoURL;
+   
    function Update(){
       navigate('/update')
    }
@@ -116,6 +116,7 @@ function Rightpanel() {
 
    function Events(e){
       e.preventDefault()  
+      // get the event data
       const options = {
          method: "POST",
          headers: { "Content-Type": "application/json" },
