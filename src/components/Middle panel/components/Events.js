@@ -17,14 +17,15 @@ import {
 import { db } from '../../../conf/fireconf';
 
 const EventComponent = ({event}) => {
-
+    // to store the number users have liked an event
     const [counter, setCounter] = useState(23);
+    // to store the number of times people have shared an event
     const [sharenum, setsharenum] = useState(34);
         const getalikes=()=>{
-            setCounter(counter + 1);
+            setCounter(counter + 1); // update the likes
         }
         const getashares=()=>{
-            setsharenum(sharenum + 1);
+            setsharenum(sharenum + 1); // update the number of shares
      
         }
        
@@ -95,6 +96,7 @@ const Events = () => {
     useEffect(() => {      
         const getPeople = async () => {
             const REF_COLLECTION = collection(db, "Events"); // reference the collection
+            // get the events data from firebase
             await getDocs(REF_COLLECTION)
                 .then((response) => {
                     setUsers(response.docs.map( (user) => {
