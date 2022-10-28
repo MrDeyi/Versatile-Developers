@@ -21,8 +21,10 @@ import {
     deleteDoc,updateDoc, deleteField
 } from "firebase/firestore"; 
 
+// a function to add a friend to the users list of friends
 const addFriend = async (friend) => {
     const REF_COLLECTION = collection(db, "Friend");
+    // add the details of the user
     addDoc(REF_COLLECTION, friend)
     .then(() => console.log("Data was saved"))
     .catch((err) => console.log(err.message))
