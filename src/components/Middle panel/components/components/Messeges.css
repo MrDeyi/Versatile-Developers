@@ -2,7 +2,7 @@
       .messages {
         background-color: #ddddf7;
         padding: 10px;
-        height: calc(515px - 160px);
+        height: calc(700px - 160px);
        /* height: 500px;*/
         overflow: scroll;
         }

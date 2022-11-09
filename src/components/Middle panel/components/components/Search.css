@@ -1,5 +1,5 @@
 .search {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(0, 0, 0);;
     color: rgb(9, 9, 9);
   }
   
@@ -16,6 +16,6 @@
 
   }
 
-  input::placeholder {
+  input{
     color: rgb(0, 0, 0);
   }

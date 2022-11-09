@@ -16,6 +16,7 @@ function Register(){
     //Declare some state variable...
     const[email,setEmail] = useState('')
     const[password, setPassword] = useState('')
+    const[username, setuserName] = useState('')
     const[conPassword, setConPassword] = useState('')
     const[error, setError] = useState('')
     const [loading, setLoading] = useState(false);
@@ -27,12 +28,15 @@ function Register(){
     const validatePassword = () =>{
         let isValid = true
         if(password !== '' && conPassword !==''){
+            //return error message
             if(password !==  conPassword){
                 isValid = false
                 setError("Passwords do not match")
                 return isValid
             }
+            //password less than 6 length
             if(password.length<6){
+
                 isValid = false
                 setError("Passwords should have atleast length of 6")
                 return isValid
@@ -45,6 +49,7 @@ function Register(){
     // will change this later for specified error
     const register = async (e) => {
         setLoading(true);
+        console.log(username)
         e.preventDefault()
         setError('')
         if(validatePassword()){
@@ -53,13 +58,14 @@ function Register(){
           try {
             //Update profile
             updateProfile(res.user, {
-                displayName: "New User",
+                displayName: username,
                 photoURL: "https://i.postimg.cc/vB4kbnMM/default-avatar.png",
             });
+            await sendEmailVerification(res.user);
             //create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
-              displayName: "New User",
+              displayName: res.user.displayName,
               email,
               photoURL: "https://i.postimg.cc/vB4kbnMM/default-avatar.png",
             username:"",
@@ -74,7 +80,7 @@ function Register(){
             //create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
             await setDoc(doc(db, "UserGroups", res.user.uid), {});
-            navigate("/");
+            navigate("/verify-email");
           } catch (err) {
             console.log(err);
             // setErr(true);
@@ -113,6 +119,8 @@ function Register(){
             setEmail('')
             setPassword('')
             setConPassword('')
+            setuserName('')
+            setError("Please check your email for verification")
         }
     
        
@@ -132,7 +140,7 @@ function Register(){
                         <h2 className={Loginstyle.title}>Welcome to Wits Social App</h2>
                         <span>Register in and enjoy the service</span>
                         {loading && "please wait..."}
-                        {error && <div className={Loginstyle.auth_error}>{error}</div>}
+                        {error && <div style={{backgroundColor:"red",width:"200px",height:"25px"}}>{error}</div>}
                         <form onSubmit={register} name ="form" className="Loginfrom" data-testid="form">
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
                                 <input
@@ -142,6 +150,16 @@ function Register(){
                                     placeholder = "Enter your Email address"
                                     required
                                     onChange={e => setEmail(e.target.value)}/>
+                            </div>
+
+                            <div className="form-outline mb-4" style={{backgroundColor: "white"}}>
+                                <input
+                                    className={Loginstyle.input}
+                                    type = 'text'
+                                    value = {username}
+                                    placeholder = "Enter your User Name"
+                                    required
+                                    onChange={e => setuserName(e.target.value)}/>
                             </div>
 
                             <div className="form-outline mb-4" style={{backgroundColor: "white"}}>

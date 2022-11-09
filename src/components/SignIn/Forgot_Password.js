@@ -5,6 +5,7 @@ import {sendPasswordResetEmail} from 'firebase/auth'
 import TWO from './TWOFA.module.css'
 
 function ForgotPassword(){
+    const [error, setError] = useState('')
     const[email,setEmail] = useState('')
     // const auth =  getAuth();
     const navigate = useNavigate()
@@ -12,11 +13,12 @@ function ForgotPassword(){
     const triggerResetEmail = async()=>{
         await sendPasswordResetEmail(auth,email);
         // console.log("Password reset email sent");
+        setError("Password reset email sent your email" );
     }
 
     return(
 
-        <div className={TWO.box}>
+        <div className={TWO.box} >
             <div className={TWO.stuff}>
             Password Reset
                 <p>
@@ -25,6 +27,7 @@ function ForgotPassword(){
                 <span>Wits-Social-App Developers will send you a email to
                     reset your password
                 </span>
+                {error && <div>{error}</div>}
             </div>
                 <form onSubmit={triggerResetEmail}>
                     <input
@@ -55,7 +58,6 @@ function ForgotPassword(){
                 </div>
         </div>
     )
-
 }
 
 export default ForgotPassword;

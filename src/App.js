@@ -47,6 +47,9 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path='/update' element ={<UpdateProfile/>}/>
           <Route path='/viewupdate' element ={<ViewProfile/>}/>
+          <Route path='/verify-email' element={<VerifyEmail/>} /> 
+          <Route path='/security' element ={<TWOFA/>}/>
+          <Route path='/forgot_password' element={<ForgotPassword/> }/>
         </Route>
         </Routes>  
   </Router>

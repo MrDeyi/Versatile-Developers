@@ -48,22 +48,25 @@ function Login(){
             navigate him to verify(/verify-email) 
             else Profile(/)
         */
-    //    if(!auth.currentUser.emailVerified) {
-    //     sendEmailVerification(auth.currentUser)
-    //     .then(() => {
-    //       // setTimeActive(true)
-    //       // navigate('/verify-email')
-    //     })
-    //   .catch(err => alert("Connection Error Please TRY again!!"))
-    // }
+       if(!auth.currentUser.emailVerified) {
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          navigate('/verify-email');
+        })
+      .catch(err => setError("Connection Error"));
+    }
+    else{
+      //Confirm user using 2FA
+      navigate('/security'); /*currently fixing this*/
+    }
     // else{
       //Confirm user using 2FA
       // <TWOFA></TWOFA>
-      navigate('/')
+      // navigate('/')
       // navigate('/security'); currently fixing this
     // }
     })
-    // .catch(err => setError("INVALID User INPUT"))
+    .catch(err => setError("INVALID USER INPUT"))
   }
 
   //a simple log in page
@@ -78,7 +81,7 @@ function Login(){
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <h2 className={Loginstyle.title}>Wits Social App</h2>
               <span>Log in and enjoy the service</span>
-              {error && <div className={Loginstyle.auth__error}>{error}</div>}
+              {error && <div style={{backgroundColor:"red",width:"200px",height:"25px"}}>{error}</div>}
               <form onSubmit={login} className="Loginfrom" name='form' id = "form">
 
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">

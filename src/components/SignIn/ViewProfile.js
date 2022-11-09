@@ -32,7 +32,7 @@ function ViewProfile(){
     //for uploading user_photo
 
     useEffect(()=>{
-      fetch(`http://localhost:4000/${user.email}`)
+      fetch(`http://localhost:4000/${auth.currentUser.uid}`)
       .then((response)=>response.json())
       .then((data)=>{
         setFirstName(data.firstname)
